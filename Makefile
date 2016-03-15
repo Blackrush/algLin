@@ -1,7 +1,5 @@
 .PHONY: default clean compile compile-test test
 
-join-with = $(subst $(space),$1,$(strip $2))
-
 SRC = $(shell find src -name '*.java' -type f)
 TEST = $(shell find test -name '*.java' -type f)
 SRC_CP = 
