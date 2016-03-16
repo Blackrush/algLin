@@ -16,29 +16,39 @@ public class Helder extends SysLin {
         final Matrice A = getMatriceSystem();
         final int n = A.nbLignes();
 
-        int acc, i, j, k;
+        int acc;
 
-        for (i = 0; i < n; i++) {
-            for (j = 0; j < (i - 1); j++) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j <= i; j++) {
                 acc = 0;
-                for (k = 0; k < (j - 1); k++) {
+                for (int k = 0; k < (j - 1); k++) {
                     acc += L.getCoef(i, k) * D.getCoef(k, k) * R.getCoef(k, j);
                 }
-                L.setCoef(i, j, (A.getCoef(i, j) - acc) / D.getCoef(j, j));
+
+                if (D.getCoef(i, i) != 0) {
+                    L.setCoef(i, j, (A.getCoef(i, j) - acc) / D.getCoef(i, i));
+                } else {
+                    L.setCoef(i, j, A.getCoef(i, j) - acc);
+                }
             }
 
             acc = 0;
-            for (k = 0; k < (i - 1); k++) {
-                acc += L.getCoef(i, k) * D.getCoef(k, k) * R.getCoef(k, j);
+            for (int k = 0; k < (i - 1); k++) {
+                acc += L.getCoef(i, k) * D.getCoef(k, k) * R.getCoef(k, i);
             }
             D.setCoef(i, i, A.getCoef(i, i) - acc);
 
-            for (j = i + 1; j < n; j++) {
+            for (int j = i; j < n; j++) {
                 acc = 0;
-                for (k = 0; k < (i - 1); k++) {
+                for (int k = 0; k < (i - 1); k++) {
                     acc += L.getCoef(i, k) * D.getCoef(k, k) * R.getCoef(k, j);
                 }
-                R.setCoef(i, j, (A.getCoef(i, j) - acc) / D.getCoef(i, i));
+
+                if (D.getCoef(j, j) != 0) {
+                    R.setCoef(i, j, (A.getCoef(i, j) - acc) / D.getCoef(j, j));
+                } else {
+                    R.setCoef(i, j, A.getCoef(i, j) - acc);
+                }
             }
         }
     }

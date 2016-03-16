@@ -18,17 +18,17 @@ public class HelderTest {
         });
         Matrice L = new Matrice(new double[][]{
                 {1, 0, 0},
-                {4, 1, 6},
-                {3, (2.0/3), 1},
+                {4, 1, 0},
+                {3, (2.0/3.0), 1},
         });
         Matrice D = new Matrice(new double[][]{
                 {1, 0, 0},
                 {0, -6, 0},
-                {0, -0, 3},
+                {0, 0, 3},
         });
         Matrice R = new Matrice(new double[][]{
                 {1, 1, -2},
-                {0, 1, 3.0/2},
+                {0, 1, (3.0/2.0)},
                 {0, 0, 1},
         });
 
