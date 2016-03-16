@@ -47,8 +47,18 @@ public class Helder extends SysLin {
         }
     }
 
+    /**
+     * For a Ax=b linear resolution system, take A & b in input, and ouput x
+     * @param A square matrix
+     * @param b vector
+     * @return resolved vector
+     */
+    private static MVecteur resolve(Matrice A, MVecteur b) {
+        throw new RuntimeException("not implemented");
+    }
+
     public MVecteur resolutionPartielle() throws IrregularSysLinException {
-        return null;
+        return resolve(R, resolve(D, resolve(L, getSecondMembre())));
     }
 
     @Override
